@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定制篮球套装 - Baller's Custom Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="Image_20250402023640-removebg-preview.png" alt="Basketball Fullsets">
+                <h1>Basketball <span>Fullsets</span></h1>
+            </div>
+            
+            <!-- 更新导航菜单，添加Font Awesome图标 -->
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="index.html" class="active">
+                            <i class="fas fa-home"></i>
+                            <span>首页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="products.html">
+                            <i class="fas fa-basketball"></i>
+                            <span>产品</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="customize.html">
+                            <i class="fas fa-palette"></i>
+                            <span>定制</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram下单</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact">
+                            <i class="fas fa-envelope"></i>
+                            <span>联系我们</span>
+                        </a>
+                    </li>
+                    <li class="cart-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>打造属于你的篮球风格</h2>
+                <p>从球衣到篮球，完全按照你的想法定制</p>
+                <div class="cta-buttons">
+                    <a href="customize.html" class="btn btn-primary">开始定制</a>
+                    <a href="products.html" class="btn btn-secondary">浏览产品</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/custom-basketball.png" alt="定制篮球" id="dynamic-product">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>为什么选择我们</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon purple-bg">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>100%定制</h3>
+                    <p>从颜色到设计，完全按照你的要求制作</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon purple-bg">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>快速生产</h3>
+                    <p>下单后3-5个工作日内完成制作</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon purple-bg">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>优质材料</h3>
+                    <p>使用专业级材料，确保最佳性能</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon purple-bg">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>社交订购</h3>
+                    <p>直接从Instagram下单，分享你的设计</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-products">
+        <div class="container">
+            <h2>热门定制产品</h2>
+            <div class="product-grid" id="popular-products">
+                <!-- 动态生成热门产品 -->
+            </div>
+            <div class="view-all">
+                <a href="products.html" class="btn btn-outline">查看所有产品</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram-section" id="instagram">
+        <div class="container">
+            <h2>在Instagram上关注我们 #BallerCustom</h2>
+            <div class="instagram-feed">
+                <!-- Instagram嵌入代码 -->
+                <div class="instagram-post">
+                    <img src="images/instagram-placeholder1.jpg" alt="Instagram post">
+                    <div class="insta-cta">
+                        <a href="#" class="btn btn-instagram"><i class="fab fa-instagram"></i> 直接下单</a>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="images/instagram-placeholder2.jpg" alt="Instagram post">
+                    <div class="insta-cta">
+                        <a href="#" class="btn btn-instagram"><i class="fab fa-instagram"></i> 直接下单</a>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="images/instagram-placeholder3.jpg" alt="Instagram post">
+                    <div class="insta-cta">
+                        <a href="#" class="btn btn-instagram"><i class="fab fa-instagram"></i> 直接下单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>客户评价</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <p>"我定制的篮球套装太棒了！质量超出预期，队友们都问我在哪里买的。"</p>
+                    <div class="client">
+                        <img src="images/client1.jpg" alt="客户">
+                        <h4>张伟</h4>
+                        <span>大学篮球队队长</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"从Instagram看到就直接下单了，流程超级简单，产品完美符合我的要求。"</p>
+                    <div class="client">
+                        <img src="images/client2.jpg" alt="客户">
+                        <h4>李娜</h4>
+                        <span>篮球教练</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"定制的前缀和号码让我们的球队看起来更专业，强烈推荐！"</p>
+                    <div class="client">
+                        <img src="images/client3.jpg" alt="客户">
+                        <h4>王强</h4>
+                        <span>业余联赛组织者</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo-purple.png" alt="Baller's Custom Shop" class="footer-logo">
+                    <p>为篮球爱好者提供最专业的定制服务</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="products.html">产品</a></li>
+                        <li><a href="customize.html">定制</a></li>
+                        <li><a href="cart.html">购物车</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>帮助</h3>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">配送政策</a></li>
+                        <li><a href="#">退货政策</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@ballerscustom.com</li>
+                        <li><i class="fas fa-phone"></i> +86 123 4567 8910</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 上海市篮球路123号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Baller's Custom Shop. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="cart.js"></script>
+<script src="customizer.js"></script>
+<script src="payment.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

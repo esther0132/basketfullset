@@ -1,0 +1,18 @@
+/* responsive.css - 您项目的响应式样式 */
+
+@media (max-width: 768px) {
+    /* 平板电脑样式 */
+    header .container {
+      flex-direction: column;
+    }
+    nav ul {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* 手机样式 */
+    .hero .container {
+      flex-direction: column;
+    }
+  }

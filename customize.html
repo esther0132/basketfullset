@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定制篮球装备 - Basketball Fullsets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 定制页面特有样式 */
+        .customize-hero {
+            background: linear-gradient(135deg, rgba(106,13,173,0.1) 0%, rgba(156,39,176,0.2) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .customize-steps {
+            background: white;
+            padding: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .steps-indicator {
+            display: flex;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .step i {
+            font-size: 1.8rem;
+            color: var(--gray-color);
+            background: var(--light-color);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active i {
+            color: white;
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .step p {
+            font-weight: 500;
+            color: var(--gray-color);
+        }
+        
+        .step.active p {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        .customize-wrapper {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+        
+        /* 产品选择区域 */
+        .product-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .product-option {
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-option:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .product-option.active {
+            border-color: var(--primary-color);
+            background: rgba(106,13,173,0.05);
+        }
+        
+        .product-option img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        
+        .product-option h4 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        /* 定制控制区域 */
+        .customizer-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .customizer-preview {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f9f9f9;
+            border-radius: 10px;
+            min-height: 400px;
+            padding: 30px;
+        }
+        
+        .product-display {
+            position: relative;
+            max-width: 100%;
+        }
+        
+        #custom-preview {
+            max-height: 400px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+        
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .customizer-controls {
+            flex: 1;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        
+        .control-group input[type="text"],
+        .control-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary-color);
+        }
+        
+        .step-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 992px) {
+            .customizer-container {
+                flex-direction: column;
+            }
+            
+            .customizer-preview {
+                min-height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .steps-indicator {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .customize-wrapper {
+                padding: 20px;
+            }
+        }
+        .header{
+            padding:10px 0;
+            }
+.logo img {
+  height: 160px;       /* 固定高度 */
+  width: auto;         /* 宽度自适应 */
+  margin-right: 25px;  /* 与导航间距 */
+  transition: all 0.3s ease; /* 保持悬停动画 */
+}
+
+.hero {
+  padding-top: 200px;  /* 补偿Logo扩大后的空间 */
+}
+
+/* ===== 4. 移动端适配 ===== */
+@media (max-width: 768px) {
+  .logo img {
+    height: 120px;
+    margin-right: 15px;
+  }
+  .hero-content h2 {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+  }
+  header {
+    min-height: 10px;
+  }
+  .hero {
+    padding-top: 160px;
+  }
+}
+/* 调试辅助线（开发时临时添加） */
+header { outline: 1px dashed rgba(255,0,0,0.3); }
+.hero-content h2 { background: rgba(0,255,0,0.1); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="Image_20250402023640-removebg-preview.png" alt="Basketball Fullsets">
+                <h1>Basketball <span>Fullsets</span></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="products.html"><i class="fas fa-basketball"></i> 产品</a></li>
+                    <li><a href="customize.html" class="active"><i class="fas fa-palette"></i> 定制</a></li>
+                    <li><a href="#instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> 联系</a></li>
+                    <li class="cart-icon"><a href="cart.html"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="customize-hero">
+        <div class="container">
+            <h2><i class="fas fa-magic"></i> 打造您的专属篮球装备</h2>
+            <p>从篮球到全套装备，完全按照您的想法定制</p>
+        </div>
+    </section>
+
+    <section class="customize-steps">
+        <div class="container">
+            <div class="steps-indicator">
+                <div class="step active" data-step="1">
+                    <i class="fas fa-basketball"></i>
+                    <p>选择产品</p>
+                </div>
+                <div class="step" data-step="2">
+                    <i class="fas fa-paint-brush"></i>
+                    <p>设计定制</p>
+                </div>
+                <div class="step" data-step="3">
+                    <i class="fas fa-check-circle"></i>
+                    <p>完成下单</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="customize-content">
+        <div class="container">
+            <div class="customize-wrapper">
+                <div class="product-selector" id="step-1">
+                    <h3><i class="fas fa-list-ul"></i> 选择您要定制的产品</h3>
+                    <div class="product-options">
+                        <div class="product-option active" data-product="basketball">
+                            <img src="images/custom-ball.jpg" alt="定制篮球">
+                            <h4><i class="fas fa-basketball"></i> 定制篮球</h4>
+                            <p>专业比赛用球，可定制文字和图案</p>
+                        </div>
+                        <div class="product-option" data-product="jersey">
+                            <img src="images/custom-jersey.jpg" alt="定制球衣">
+                            <h4><i class="fas fa-tshirt"></i> 定制球衣</h4>
+                            <p>个性化球队球衣，印上您的号码和名字</p>
+                        </div>
+                        <div class="product-option" data-product="shoes">
+                            <img src="images/custom-shoes.jpg" alt="定制球鞋">
+                            <h4><i class="fas fa-shoe-prints"></i> 定制球鞋</h4>
+                            <p>独一无二的篮球鞋设计</p>
+                        </div>
+                        <div class="product-option" data-product="fullset">
+                            <img src="images/custom-fullset.jpg" alt="定制套装">
+                            <h4><i class="fas fa-star"></i> 定制全套装备</h4>
+                            <p>从篮球到服装的完整套装</p>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button class="btn btn-primary next-step" data-next="2">
+                            <i class="fas fa-arrow-right"></i> 下一步：设计定制
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-customizer" id="step-2" style="display: none;">
+                    <div class="customizer-container">
+                        <div class="customizer-preview">
+                            <div class="product-display" id="product-display">
+                                <img src="images/custom-ball.jpg" alt="定制预览" id="custom-preview">
+                                <div class="text-overlay" id="text-overlay">Basketball Fullsets</div>
+                            </div>
+                        </div>
+                        <div class="customizer-controls">
+                            <h3><i class="fas fa-sliders-h"></i> 定制选项</h3>
+                            <div class="control-group">
+                                <label for="custom-text"><i class="fas fa-font"></i> 自定义文字</label>
+                                <input type="text" id="custom-text" placeholder="输入要印制的文字(最多20字)" maxlength="20" value="Basketball Fullsets">
+                            </div>
+                            <div class="control-group">
+                                <label for="text-color"><i class="fas fa-palette"></i> 文字颜色</label>
+                                <input type="color" id="text-color" value="#000000">
+                            </div>
+                            <div class="control-group">
+                                <label for="text-size"><i class="fas fa-text-height"></i> 文字大小</label>
+                                <select id="text-size">
+                                    <option value="small">小号</option>
+                                    <option value="medium" selected>中号</option>
+                                    <option value="large">大号</option>
+                                </select>
+                            </div>
+                            <div class="control-group">
+                                <label for="text-font"><i class="fas fa-font"></i> 选择字体</label>
+                                <select id="text-font">
+                                    <option value="Arial">Arial (现代)</option>
+                                    <option value="Times New Roman">Times New Roman (经典)</option>
+                                    <option value="Impact">Impact (粗体)</option>
+                                    <option value="Courier New">Courier New (等宽)</option>
+                                </select>
+                            </div>
+                            <div class="control-group">
+                                <label><i class="fas fa-fill-drip"></i> 产品主色</label>
+                                <div class="color-options">
+                                    <div class="color-option purple active" data-color="#6a0dad" title="品牌紫"></div>
+                                    <div class="color-option red" data-color="#ff0000" title="经典红"></div>
+                                    <div class="color-option blue" data-color="#0000ff" title="深蓝"></div>
+                                    <div class="color-option black" data-color="#000000" title="黑色"></div>
+                                    <div class="color-option white" data-color="#ffffff" title="白色"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button class="btn btn-outline prev-step" data-prev="1">
+                            <i class="fas fa-arrow-left"></i> 返回上一步
+                        </button>
+                        <button class="btn btn-primary next-step" data-next="3">
+                            <i class="fas fa-shopping-cart"></i> 加入购物车并结算
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/dec36de645f249500a6ee5784da5557.jpg" alt="Basketball Fullsets" class="footer-logo">
+                    <p><i class="fas fa-basketball"></i> 专业篮球装备定制专家</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3><i class="fas fa-tools"></i> 定制服务</h3>
+                    <ul>
+                        <li><a href="customize.html"><i class="fas fa-basketball"></i> 篮球定制</a></li>
+                        <li><a href="customize.html"><i class="fas fa-tshirt"></i> 球衣定制</a></li>
+                        <li><a href="customize.html"><i class="fas fa-shoe-prints"></i> 球鞋定制</a></li>
+                        <li><a href="customize.html"><i class="fas fa-users"></i> 团队套装</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3><i class="fas fa-question-circle"></i> 客户支持</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question"></i> 常见问题</a></li>
+                        <li><a href="#"><i class="fas fa-truck"></i> 配送信息</a></li>
+                        <li><a href="#"><i class="fas fa-exchange-alt"></i> 退货政策</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> 定制指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3><i class="fas fa-address-card"></i> 联系我们</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +86 123 4567 8910</li>
+                        <li><i class="fas fa-envelope"></i> info@basketballfullsets.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 上海市篮球路123号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p><i class="far fa-copyright"></i> 2023 Basketball Fullsets. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="customizer.js"></script>
+</body>
+</html>

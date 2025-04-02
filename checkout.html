@@ -1,0 +1,38 @@
+<section class="payment-methods">
+    <div class="container">
+        <h2>付款方式</h2>
+        <div class="payment-options">
+            <div class="payment-option">
+                <input type="radio" id="bank-transfer" name="payment" value="bank-transfer" checked>
+                <label for="bank-transfer">
+                    <i class="fas fa-university"></i>
+                    <span>银行转账</span>
+                </label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="tng" name="payment" value="tng">
+                <label for="tng">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Touch 'n Go</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="payment-details" id="bank-details">
+            <h3>银行转账信息</h3>
+            <p>银行: Maybank</p>
+            <p>账户名: BASKETBALL FULLSETS ENTERPRISE</p>
+            <p>账号: 1234 5678 9012</p>
+            <p>转账后请将收据发送至: payment@basketballfullsets.com</p>
+        </div>
+        
+        <div class="payment-details" id="tng-details" style="display: none;">
+            <h3>Touch 'n Go支付</h3>
+            <p>请扫描以下二维码完成支付:</p>
+            <img src="images/tng-qr.jpg" alt="TNG QR Code" class="tng-qr">
+            <p>或转账至: 012-3456789 (BASKETBALL FULLSETS)</p>
+            <p>支付后请截图发送至: payment@basketballfullsets.com</p>
+        </div>
+    </div>
+</section>
+
